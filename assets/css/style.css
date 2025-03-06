@@ -2959,14 +2959,16 @@ textarea {
 
 .services h2 {
   font-size: 3.8rem;
+  font-weight: 1000;
   margin-bottom: 1rem;
   color: #00467f;
 }
 
 .services p {
   font-size: 2.2rem;
+  font-weight: 600;
   margin-bottom: 3rem;
-  color: #666;
+  color: #24292a;
 }
 
 .services-container {
@@ -2976,7 +2978,7 @@ textarea {
 }
 
 .service-card {
-  background-color: #f8f9fa;
+  background-color: #8DBAC9;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -3015,13 +3017,15 @@ textarea {
 
 .service-card h3 {
   font-size: 2rem;
+  font-weight: 900;
   margin-bottom: 0.8rem;
   color: #00467f;
 }
 
 .service-card p {
   font-size: 1.5rem;
-  color: #666;
+  font-weight: 400;
+  color: #272121;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
