@@ -346,9 +346,10 @@ p {
 
 /* Footer Styles */
 footer {
-  background-color: #232323;
-  color: #ffffff;
-  text-align: center;
+    background-color: #232323;
+    color: #ffffff;
+    text-align: center;
+
 }
 
 .footer-container {
