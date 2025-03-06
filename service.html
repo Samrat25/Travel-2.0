@@ -1,305 +1,377 @@
-  <!-- Cab or Auto Booking -->
-  <img style="position: absolute;height: 450px;left: 1250px;z-index:10;top: 4200px;mix-blend-mode: multiply;"
-  src="img/BOOK-img.avif" alt="image">
-<section id="cab-booking" class="cab-booking-section light-mode" style="border: 2px solid #FFFFFF;">
-  <div class="booking-container">
-    <h1 style="color: white; font-size: xx-large;">Book a Cab or Auto</h1>
-    <form action="/book-cab" method="POST">
-      <div class="form-group" style="display: flex; flex-wrap: wrap;">
-        <label for="pickup-location" style="font-size: 15px;"><strong>Pickup Location</strong></label>
-        <input type="text" id="pickup-location" name="pickup-location" placeholder="Enter pickup location"
-          required />
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
-          width="100%" height="60" frameborder="0" style="border:0"></iframe>
-      </div>
-      <div class="form-group" style="display: flex; flex-wrap: wrap;">
-        <label for="drop-location" style="font-size: 15px;"><strong>Drop Location</strong></label>
-        <input type="text" id="drop-location" name="drop-location" placeholder="Enter drop location" required />
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319"
-          width="100%" height="60" frameborder="0" style="border:0"></iframe>
-      </div>
-
-      <form action="/book-cab" method="POST" style="
-        margin-left: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: column;
-      ">
-
-        <div style="display: flex; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
-          <label style="font-size: 1.5em; margin-right: 35px;" for="vehicle-type">
-            <strong>Vehicle Type</strong>
-          </label>
-
-          <select id="vehicle-type" name="vehicle-type" style="width: 150px; height: 35px; padding: 5px;" required>
-            <option value="cab">Cab</option>
-            <option value="auto">Auto</option>
-            <option value="Sharing cab">Sharing Cab</option>
-            <option value="Sharing cab">Sharing Auto</option>
-            <option value="Sharing cab">Bike</option>
-            <option value="Sharing cab">Premium Bike</option>
-          </select>
-        </div>
-
-        <div class="form-group" style="display: flex; flex-wrap: wrap;">
-          <label for="travel-date" style="font-size: 15px;"><strong>Travel Date</strong></label>
-          <input type="date" id="travel-date" name="travel-date" required min="" />
-
-          <!--Logic To prevent the user from selecting an old date  -->
-
-          <script>
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('travel-date').setAttribute('min', today);
-          </script>
-
-        </div>
-        <div class="form-group" style="display: flex; flex-wrap: wrap;">
-          <label for="travel-time" style="font-size: 15px;"><strong>Travel Time</strong></label>
-          <input type="time" id="travel-time" name="travel-time" required />
-        </div>
-
-
-
-        <!-- <button class="book-btn" type="submit" style="padding: 15px; font-size:20px;background-color: #ba5ae0;color: white;font-size: large;font-weight: bolder;">Book now</button> -->
-
-        <div class="button-container">
-          <button class="book2-btn" type="submit">
-            Book now
-          </button>
-        </div>
-</section>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/service.css" rel="stylesheet">
+ main
 <style>
-  /* Main Section Styling */
-  .cab-booking-section {
-    background-color: #f9f9f9;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Booking Container Styling */
-  .booking-container {
-    width: 80%;
-    /* Increase width of the container */
-    max-width: 1200px;
-    /* Limit max width for larger screens */
-    margin: 0 auto;
-    /* Center align the container */
-    background: linear-gradient(135deg, #5fc0d6, #2193b0);
-    /* Eye-catching gradient */
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    /* Subtle shadow for depth */
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .booking-container:hover {
-    transform: scale(1.02);
-    /* Slight scale effect on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    /* Increase shadow on hover */
-  }
-
-  /* Heading Styles */
-  .cab-booking-section h2 {
-    color: white;
-    /* Match with gradient background */
-    text-align: center;
-    margin-bottom: 30px;
-    transition: color 0.3s;
-  }
-
-  .cab-booking-section h2:hover {
-    color: #f1f1f1;
-    /* Slight lightening effect on hover */
-  }
-
-  /* Form Group Styles */
-  .form-group {
-    background-color: rgba(255, 255, 255, 0.9);
-    /* Semi-transparent white background */
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-  }
-
-  .form-group:hover {
-    background-color: rgba(255, 255, 255, 1);
-    /* Fully opaque on hover */
-  }
-
-  /* Label and Input Styles */
-  label {
-    color: #333;
-  }
-
-  input[type="text"],
-  input[type="date"],
-  input[type="time"],
-  select {
-    width: 200px;
-    padding: 12px;
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-
-  input[type="text"]:focus,
-  input[type="date"]:focus,
-  input[type="time"]:focus,
-  select:focus {
-    border-color: #2193b0;
-    box-shadow: 0 0 5px rgba(33, 147, 176, 0.5);
-    /* Match gradient color */
-  }
-
-  /* Button Styling */
-  .book-btn {
-    background: linear-gradient(135deg, #2193b0, #6dd5ed);
-    /* Smooth gradient */
-    color: #fff;
-    padding: 12px 24px;
-    /* Balanced padding for a better look */
-    font-size: 18px;
-    /* Slightly smaller font for a cleaner appearance */
-    border: none;
-    border-radius: 8px;
-    /* Smoothly rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow for depth */
-    transition: background 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-    /* Pointer cursor for better interactivity */
-    width: fit-content;
-    /* Ensures the button fits the content */
-  }
-
-  .book-btn:hover {
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
-    /* Reverse gradient on hover */
-    transform: translateY(-3px);
-    /* Slight lift effect on hover */
-  }
-
-  .book-btn:active {
-    transform: translateY(1px);
-    /* Pressed effect for click feedback */
-  }
+          /* circle styles */
+          .circle {
+            height: 24px;
+            width: 24px;
+            border-radius: 24px;
+            background-color: rgb(255, 0, 0);
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 99999999;
+          }
+        </style>  
+    </head>
 
 
-  /* Main Section Styling */
-  .cab-booking-section {
-    background-color: #f9f9f9;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
+</head>
+ main
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <h1 class="display-4">Travel Services</h1>
+            <p class="lead">Discover our range of travel services</p>
+        </div>
+    </header>
 
-  /* Background color for form groups */
-  .form-group {
-    background-color: #e8f4fa;
-    /* Light blue background for each form group */
-    border-radius: 5px;
-    padding: 15px;
-    /* Padding around the inputs */
-    margin-bottom: 20px;
-    transition: background-color 0.3s;
-    /* Transition for background color on hover */
-  }
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#hotels">Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#flights">Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cars">Car Rentals</a></li>
+                    <li>
+                        <button class="mode-toggle" id="modeToggle">
+                            <span class="sun-icon glow"><img src="day-mode.png" alt="Light mode"></span>
+                            <span class="moon-icon glow" style="display: none;"><img src="moon.png" alt="Dark mode"></span>
+                          </button>
+                        </li>
+            
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  .form-group:hover {
-    background-color: #d1e7f9;
-    /* Darker blue on hover */
-  }
+    <main class="container my-5">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <select class="form-select" aria-label="Sort services">
+                    <option selected>Sort by</option>
+                    <option value="1">Price: Low to High</option>
+                    <option value="2">Price: High to Low</option>
+                    <option value="3">Rating</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search services" aria-label="Search services">
+                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
 
-  /* Heading Styles */
-  .cab-booking-section h2 {
-    color: #4a90e2;
-    text-align: center;
-    margin-bottom: 30px;
-    transition: color 0.3s;
-  }
+        <section id="hotels" class="mb-5">
+            <h2 class="mb-4">Hotel Bookings</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" class="card-img-top" alt="Luxury hotel room">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Hotels</h5>
+                            <p class="card-text">Experience unparalleled comfort in our handpicked luxury hotels.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4" class="card-img-top" alt="Budget hotel room">
+                        <div class="card-body">
+                            <h5 class="card-title">Budget Stays</h5>
+                            <p class="card-text">Comfortable accommodations that don't break the bank.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd" class="card-img-top" alt="Boutique hotel lobby">
+                        <div class="card-body">
+                            <h5 class="card-title">Boutique Hotels</h5>
+                            <p class="card-text">Unique and stylish accommodations for the discerning traveler.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  .cab-booking-section h2:hover {
-    color: #007bff;
-    /* Color changes on hover */
-  }
+        <section id="flights" class="mb-5">
+            <h2 class="mb-4">Flight Reservations</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05" class="card-img-top" alt="Airplane wing view">
+                        <div class="card-body">
+                            <h5 class="card-title">International Flights</h5>
+                            <p class="card-text">Connect to destinations around the world with our international flight options.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="/img/df1.jpg" class="card-img-top" alt="Domestic flight">
+                        <div class="card-body">
+                            <h5 class="card-title">Domestic Flights</h5>
+                            <p class="card-text">Explore your country with our extensive network of domestic flights.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>                
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad" class="card-img-top" alt="Private jet">
+                        <div class="card-body">
+                            <h5 class="card-title">Private Charters</h5>
+                            <p class="card-text">Experience luxury and convenience with our private jet charter services.</p>
+                            <a href="#" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  /* Label Styles */
-  label {
-    display: block;
-    color: #333;
-    font-size: 15px;
-    margin-bottom: 5px;
-  }
+        <section id="cars" class="mb-5">
+            <h2 class="mb-4">Car Rentals</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1546614042-7df3c24c9e5d" class="card-img-top" alt="Economy car">
+                        <div class="card-body">
+                            <h5 class="card-title">Economy Cars</h5>
+                            <p class="card-text">Affordable and fuel-efficient options for budget-conscious travelers.</p>
+                            <a href="#" class="btn btn-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027" class="card-img-top" alt="Luxury car">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Vehicles</h5>
+                            <p class="card-text">Travel in style with our premium and luxury car rental options.</p>
+                            <a href="#" class="btn btn-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 service-card">
+                        <img src="img/df2.jpg" class="card-img-top" alt="SUV">
+                        <div class="card-body">
+                            <h5 class="card-title">SUVs & Vans</h5>
+                            <p class="card-text">Perfect for group travel or those needing extra space.</p>
+                            <a href="#" class="btn btn-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  /* Input Styles */
-  input[type="text"],
-  input[type="date"],
-  input[type="time"],
-  select {
-    width: 100%;
-    /* Increased width for text inputs */
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
+        <section id="booking-form" class="bg-light p-4 rounded">
+            <h2 class="mb-4">Quick Booking</h2>
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="service-type" class="form-label">Service Type</label>
+                        <select id="service-type" class="form-select" required>
+                            <option value="" selected disabled>Choose a service</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="flight">Flight</option>
+                            <option value="car">Car Rental</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="destination" class="form-label">Destination</label>
+                        <input type="text" class="form-control" id="destination" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="check-in" class="form-label">Check-in / Start Date</label>
+                        <input type="date" class="form-control" id="check-in" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="check-out" class="form-label">Check-out / End Date</label>
+                        <input type="date" class="form-control" id="check-out" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="guests" class="form-label">Number of Guests / Passengers</label>
+                    <input type="number" class="form-control" id="guests" min="1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Search Availability</button>
+            </form>
+        </section>
+    </main>
 
-  input[type="text"]:focus,
-  input[type="date"]:focus,
-  input[type="time"]:focus,
-  select:focus {
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-  }
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to providing the best travel experiences for our customers.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p>Email: info@travelservices.com<br>Phone: +1 (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#" class="text-white me-2">Facebook</a>
+                    <a href="#" class="text-white me-2">Twitter</a>
+                    <a href="#" class="text-white">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ main
 
-  /* Button Styles */
-  .book-btn {
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 15px;
-    font-size: 20px;
-    transition: background-color 0.3s, transform 0.2s;
-  }
+<!-- Circles -->
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
 
-  .book-btn:hover {
-    background-color: #007bff;
-    /* Button color on hover */
-    transform: scale(1.05);
-    /* Slight zoom effect */
-  }
+<script>
+    // coordinates for the cursor :
+    const coords = { x: 0, y: 0 };
+    const circles = document.querySelectorAll(".circle");
 
-  /* Responsive Iframe Styles */
-  iframe {
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    transition: transform 0.3s;
-  }
+    const colors = [
+      "#fc5720", "#fc6532", "#fc6532","#fd8b65", "#d5585c", "#fac3b1", "#f4d5cb", "#fefefe", "#fefefe", "#cdf2c5", "#b2eca5", "#95e283", "#7dda68", "#4adc2d", "#69d451", "#54c939", "#34b916", "#28b309", "#1e9c02", 
+    ];
 
-  iframe:hover {
-    transform: scale(1.02);
-    /* Slight zoom effect on iframe */
-  }
+    circles.forEach(function (circle, index) {
+      circle.x = 0;
+      circle.y = 0;
+      circle.style.backgroundColor = colors[index % colors.length];
+    });
 
-  /* Flex Container for Vehicle Type */
-  .form-group {
-    display: flex;
-    align-items: center;
-  }
+    // update the coordinates when the mouse moves:
+    window.addEventListener("mousemove", function (e) {
+      coords.x = e.clientX;
+      coords.y = e.clientY;
+    });
 
-  /* Vehicle Type Dropdown Styling */
-  select {
-    margin-left: 10px;
-  }
-</style>
+    // animation function to move the circles:
+    function animateCircles() {
+      let x = coords.x;
+      let y = coords.y;
+
+      circles.forEach(function (circle, index) {
+       
+
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
+        circle.style.scale = (circles.length - index) / circles.length;
+
+        circle.x = x;
+        circle.y = y;
+
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+      });
+
+      requestAnimationFrame(animateCircles);
+    }
+    
+    animateCircles();
+  </script>
+
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const hamburger = document.getElementById("hamburger");
+          const navList = document.getElementById("nav-links");
+          const closeBtn = document.getElementById("closeBtn");
+    
+          hamburger.addEventListener("click", function () {
+            navList.classList.toggle("active");
+          });
+    
+          closeBtn.addEventListener("click", function () {
+            navList.classList.remove("active");
+          });
+        });
+    
+       document.addEventListener("DOMContentLoaded", function() {
+         const modeToggle = document.getElementById("modeToggle");
+         const sunIcon = document.querySelector(".sun-icon");
+         const moonIcon = document.querySelector(".moon-icon");
+    
+         // Check saved theme in localStorage and apply it
+         const currentTheme = localStorage.getItem("theme") || "light";
+          if (currentTheme === "dark") {
+            document.body.classList.add("dark-mode");
+            sunIcon.style.display = "none";
+            moonIcon.style.display = "inline-block";
+         } else {
+            sunIcon.style.display = "inline-block";
+            moonIcon.style.display = "none";
+        }
+    
+    // Toggle between light and dark mode on button click
+    modeToggle.addEventListener("click", () => {
+        const isDarkMode = document.body.classList.toggle("dark-mode");
+    
+        // Apply dark mode styles to relevant sections
+        const sections = document.querySelectorAll('.about, .core-values, .team');
+        sections.forEach(section => {
+            if (isDarkMode) {
+                section.classList.add('dark-mode');
+            } else {
+                section.classList.remove('dark-mode');
+            }
+        });
+    
+        // Update icons and local storage
+        if (isDarkMode) {
+            sunIcon.style.display = "none";
+            moonIcon.style.display = "inline-block";
+            localStorage.setItem("theme", "dark");
+        } else {
+            sunIcon.style.display = "inline-block";
+            moonIcon.style.display = "none";
+            localStorage.setItem("theme", "light");
+        }
+    });
+    });
+      </script>
+    
+ main
+</body>
+</html>
